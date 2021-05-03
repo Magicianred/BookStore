@@ -1,0 +1,26 @@
+﻿@model HomeIndexViewModel
+@{ ViewData["Title"] = "Home Page"; }
+
+<select asp-items="Model.Categories" class="form-control mt-2 mb-2"></select>
+<select asp-items="Model.Authors" class="form-control mb-2"></select>
+
+<div class="row mx-md-n2">
+
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-md-3 px-md-2 mb-3">
+            <div class="product-image-wrapper">
+                <img src="~/img/@product.PictureUri" class="product-image" />
+            </div>
+            <div class="product-name">
+              @product.Name
+            </div>
+            <div class="author-name">
+               @product.AuthorName
+            </div>
+            <div class="product-price">
+                <p>@product.Price.ToString("c2")</p>
+            </div>
+        </div>
+    }
+</div>
