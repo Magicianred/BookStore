@@ -1,11 +1,17 @@
 ﻿@model HomeIndexViewModel
 @{ ViewData["Title"] = "Home Page"; }
 
-<select asp-items="Model.Categories" class="form-control mt-2 mb-2"></select>
-<select asp-items="Model.Authors" class="form-control mb-2"></select>
+
+<form class="form-inline py-3">
+    <label class="mr-1">Category: </label>
+    <select asp-for="CategoryId"  asp-items="Model.Categories" class="form-control mr-0 mr-sm-2"></select>
+    <label class="mr-1 mt-2 mt-md-0">Author: </label>
+    <select asp-for="AuthorId" asp-items="Model.Authors" class="form-control"></select>
+    <button>Filtrele</button>
+</form>
 
 <div class="row mx-md-n2">
-
+        
     @foreach (var product in Model.Products)
     {
         <div class="col-md-3 px-md-2 mb-3">
@@ -24,3 +30,11 @@
         </div>
     }
 </div>
+
+@section scripts{ 
+    <script>
+        $("#CategoryId", "#AutorId").change(function () {
+            $(this).closest("form").submit();
+        })
+    </script>
+}
