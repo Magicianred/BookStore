@@ -89,12 +89,14 @@ body {
     font-weight:bold;
 }
 
-.product-price {
-    text-align: center;
-    font-size: .8rem;
-}
 .author-name {
     text-align: center;
     font-size: .8rem;
     font-weight: lighter;
+}
+
+.product-price {
+    text-align: center;
+    font-size: .8rem;
+    margin-bottom: .3rem;
 }

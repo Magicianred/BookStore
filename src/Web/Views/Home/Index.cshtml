@@ -13,7 +13,7 @@
         
     @foreach (var product in Model.Products)
     {
-        <div class="col-md-3 px-md-2 mb-3">
+        <div class="col-md-3 px-md-2 mb-4 d-flex flex-column align-items-center">
             <div class="product-image-wrapper">
                 <img src="~/img/@product.PictureUri" class="product-image" />
             </div>
@@ -26,6 +26,9 @@
             <div class="product-price">
                 <p>@product.Price.ToString("c2")</p>
             </div>
+            <button class=" btn btn-success btn-sm mt-auto">
+                <i class="fas fa-cart-plus">Add to Basket</i>
+            </button>
         </div>
     }
 </div>
