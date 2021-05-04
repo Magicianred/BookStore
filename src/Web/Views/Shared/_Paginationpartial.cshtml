@@ -1,0 +1,23 @@
+﻿@model PaginationInfoViewModel
+@{ 
+    // önce mevcut route datayı alacağım sonra ona sayfa route değerini ekleyeceğim
+    var prevRouteData = Context.Request.Query.ToDictionary(x => x.Key, x => x.Value.ToString());
+    prevRouteData.Remove("page");
+    prevRouteData.Add("page", (Model.Page - 1).ToString());
+
+    var nextRouteData = Context.Request.Query.ToDictionary(x => x.Key, x => x.Value.ToString());
+    nextRouteData.Remove("page");
+    nextRouteData.Add("page", (Model.Page + 1).ToString());
+
+  }
+
+
+
+
+<div class="d-flex justify-content-between align-items-baseline">
+    <a asp-action="Index" asp-all-route-data="@prevRouteData" class="btn btn-dark @(Model.HasPrev ? "" : "disabled")">&laquo; <span class="d-none d-sm-inline">Previous</span></a>
+
+    <span>Showing @Model.ITemsOnPage of @Model.TotalItem Items (Page @Model.Page / @Model.TotalPages)</span>
+
+    <a asp-action="Index" asp-all-route-data="@nextRouteData" class="btn btn-dark @(Model.HasNext ? "" : "disabled")"><span class="d-none d-sm-inline"s>Next</span> &raquo;</a>
+</div>

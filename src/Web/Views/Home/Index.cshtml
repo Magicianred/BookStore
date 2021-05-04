@@ -7,7 +7,6 @@
     <select asp-for="CategoryId"  asp-items="Model.Categories" class="form-control mr-0 mr-sm-2"></select>
     <label class="mr-1 mt-2 mt-md-0">Author: </label>
     <select asp-for="AuthorId" asp-items="Model.Authors" class="form-control"></select>
-    <button>Filtrele</button>
 </form>
 
 <div class="row mx-md-n2">
@@ -31,10 +30,12 @@
     }
 </div>
 
+<partial name="_Paginationpartial" model="Model.PaginationInfo"/>
+
 @section scripts{ 
     <script>
-        $("#CategoryId", "#AutorId").change(function () {
+        $("#CategoryId,#AuthorId").change(function () {
             $(this).closest("form").submit();
-        })
+        });
     </script>
 }
